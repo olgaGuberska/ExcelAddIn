@@ -1,0 +1,239 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>City Aggregator Add-in</title>
+    <link href="//cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
+    
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+    <!-- Template styles 
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />-->
+    <style>
+/* 
+ * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
+
+ html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI" !important;
+}
+h1,
+h3 {
+  margin: 10px;
+  font-family: "Segoe UI" !important;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.ms-welcome__header {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ms-welcome__main > h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.ms-welcome__features {
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+.ms-welcome__features.ms-List .ms-ListItem {
+  padding-bottom: 20px;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.ms-welcome__features.ms-List .ms-ListItem > .ms-Icon {
+  margin-right: 10px;
+}
+
+.ms-welcome__action.ms-Button--hero {
+  margin-top: 30px;
+}
+
+.ms-Button.ms-Button--hero .ms-Button-label {
+  color: #0078d7;
+}
+
+.ms-Button.ms-Button--hero:hover .ms-Button-label,
+.ms-Button.ms-Button--hero:focus .ms-Button-label {
+  color: #005a9e;
+  cursor: pointer;
+}
+
+b {
+  font-weight: bold;
+}
+
+#js-licensing {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.search-field-container {
+  padding-left: 10px;
+}
+
+
+
+.e-bigger #employees_popup .e-dropdownbase .e-list-item {
+  line-height: 40px;
+  height: 64px;
+}
+
+.e-bigger #employees_popup.e-popup .empImage {
+  margin: 6px 16px;
+}
+
+#employees_popup .head {
+  font-weight: 550;
+  height: 32px;
+  padding: 10px 0 0 15px;
+  color: rgba(0, 0, 0, .54);
+  font-size: 16px;
+  font-family: "Roboto";
+  background-color: #f5f5f5;
+}
+
+.highcontrast #employees_popup .head {
+  color: #fff;
+  background-color: #000;
+}
+
+.bootstrap4 #employees_popup .head {
+  color: #6c757d;
+}
+
+.fabric #employees_popup .head {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  color: #0078d7;
+  font-weight: 400;
+}
+
+.e-bigger #employees_popup .e-dropdownbase .e-list-item {
+  line-height: 40px;
+  height: 80px;
+}
+
+#employees_popup .ename {
+  display: block !important;
+  opacity: .87;
+  font-size: 16px;
+  margin-top: 9px;
+}
+
+#employees_popup .job {
+  opacity: .54;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 11px;
+}
+
+.bootstrap #employees_popup .job {
+  margin-top: 0px;
+}
+
+.bootstrap.e-bigger #employees_popup .job {
+  margin-top: -16px;
+}
+
+.e-bigger #employees_popup .job {
+  margin-top: -16px;
+}
+
+#employees_popup .empImage {
+  margin: 0px 16px;
+  float: left;
+  width: 100px;
+  height: 50px;
+}
+
+#employees_popup .e-dropdownbase .e-list-item * {
+  display: block;
+  text-indent: 0;
+}
+
+.bootstrap4 #employees_popup.e-popup .empImage {
+  margin: 0px 16px;
+}
+
+.bootstrap4.e-bigger #employees_popup.e-popup .empImage {
+  margin: 6px 16px;
+}
+
+.bootstrap4 #employees_popup.e-popup .job {
+  margin-top: 0;
+}
+
+.e-bigger.bootstrap4 #employees_popup.e-popup .job {
+  margin-top: -15px;
+}
+
+.fluent-dark .header {
+  background: #252423;
+  color: #2899F5;
+}
+
+.bootstrap5-dark .header {
+  background: #343A40;
+  color: #7B848D;
+}
+
+.fluent .header{
+   color: #2899F5;
+}
+
+.tailwind-dark .header {
+  background: #374151;
+  color: rgb(255, 255, 255);
+}
+
+.material-dark .header {
+  background: rgb(66, 66, 66);
+  color: rgb(255, 255, 255);
+}
+
+.fabric-dark .header {
+  background: rgb(40, 39, 39);
+  color: rgb(255, 255, 255);
+}
+
+.bootstrap-dark .header {
+  background: rgb(49, 49, 49);
+  color: rgb(255, 255, 255);
+}
+
+    </style>
+</head>
+
+<body class="ms-font-m ms-welcome">
+    <h2 id="sideload-msg" className='ms-fontSize-su ms-fontColor-neutralPrimary'>Loading...</h2>
+    <app-home>
+    </app-home>
+</body>
+</html>

@@ -1,0 +1,2 @@
+# AddInExcel
+A Web Application that allows to interact with an Excel Sheet using Office JavaScript API. Solution was built using a Web Application created with Angular with Syncfusion UI components, and a Back-end service running as a NodeJS app.

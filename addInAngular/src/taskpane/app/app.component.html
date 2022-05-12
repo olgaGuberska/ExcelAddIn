@@ -1,0 +1,39 @@
+<header class="ms-welcome__header ms-bgColor-neutralLighter ms-u-fadeIn500" style="flex-direction:inherit!important">
+    <div style="display: flex; flex:1; margin-bottom: 10px;">
+        <div style="flex: 1;">
+            <h1 class="ms-fontSize-xxl ms-fontWeight-light ms-fontColor-neutralPrimary">{{appName}}</h1>
+        </div>
+        <div style="text-align: right;">
+            <h3 class="ms-fontSize-m">{{dateOfRefreshing}}</h3>
+            <button (click)="serverRequest()" style="height: 28px; margin-right: 10px;">Refresh data</button>
+        </div>
+    </div>
+</header>
+<main class="ms-welcome__main">
+    <h3 class="ms-fontSize-m"> {{appMainInstructions}}</h3>
+    <div style="margin-left: 10px; width:96%;">
+        <ejs-autocomplete id='employees' #auto (dblclick)="onDblAutoComplete()" [dataSource]='autocompleteCategories'
+            [fields]='fieldsVeg' [placeholder]='text2'>
+            <ng-template #headerTemplate>
+                <div class="head"> <span class="photo">City</span> <span style="margin-left:90px;">State/County</span>
+                </div>
+            </ng-template>
+            <ng-template #itemTemplate let-data>
+                <div>
+                    <div class="empImage">{{data.City}}</div>
+                    <div class="ename">{{data.State}}</div>
+                    <div class="job">{{data.County}}</div>
+                </div>
+            </ng-template>
+            <ng-template #noRecordsTemplate>
+                <span class='norecord'> NO CITY AVAILABLE IN DATABASE </span>
+            </ng-template>
+        </ejs-autocomplete>
+    </div>
+
+
+    <h3 class="ms-fontSize-m">{{appMainInstructions2}}</h3>
+    <ejs-treeview id="treeelement" #tree [fields]="field" (dblclick)="onDblTreeComponent()" *ngIf="shown">
+    </ejs-treeview>
+
+</main>

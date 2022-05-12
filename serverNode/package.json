@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "tedious": "^14.4.0",
+    "webpack": "^5.72.0"
+  },
+  "name": "servernode",
+  "version": "1.0.0",
+  "main": "serverN.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

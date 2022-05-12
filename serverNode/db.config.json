@@ -1,0 +1,16 @@
+{
+  "connection": {
+    "authentication": {
+      "options": {
+        "userName": "puUserName",
+        "password": "PutUserPassword"
+      },
+      "type": "default"
+    },
+    "server": "dataBase",
+    "options": {
+      "database": "dataBseName",
+      "encrypt": true
+    }
+  }
+}
